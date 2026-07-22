@@ -849,3 +849,43 @@ footer p {
     scroll-behavior: auto !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   11. Mobile Responsiveness & Layout Overrides
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .trail-cat-follower {
+    top: auto !important;
+    bottom: 16px !important;
+    right: 16px !important;
+    transform: none !important;
+  }
+
+  .trail-cat-bubble {
+    font-size: 0.72rem;
+    padding: 0.35rem 0.65rem;
+    max-width: 180px;
+    white-space: normal;
+    text-align: right;
+  }
+
+  .trail-cat-avatar {
+    width: 42px;
+    height: 42px;
+  }
+
+  .neko-mini-svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .slider-arrow-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .scroll-paw-print {
+    font-size: 0.95rem;
+  }
+}

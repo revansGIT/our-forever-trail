@@ -428,17 +428,23 @@ function initCatCompanion() {
 }
 
 function spawnPawPrintAtCat(catElement) {
-  const rect = catElement.getBoundingClientRect();
+  const isMobile = window.innerWidth <= 768;
   const paw = document.createElement('div');
   paw.className = 'scroll-paw-print';
   paw.innerHTML = '🐾';
 
-  paw.style.left = `${rect.left + 10}px`;
-  paw.style.top = `${rect.top - 15}px`;
+  if (isMobile) {
+    paw.style.right = '24px';
+    paw.style.top = `${window.innerHeight - 70}px`;
+  } else {
+    const rect = catElement.getBoundingClientRect();
+    paw.style.left = `${rect.left + 10}px`;
+    paw.style.top = `${rect.top - 15}px`;
+  }
 
   document.body.appendChild(paw);
 
   setTimeout(() => {
     paw.remove();
-  }, 1600);
+  }, 1400);
 }
