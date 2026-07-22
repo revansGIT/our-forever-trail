@@ -14,11 +14,67 @@
   },
   "milestones": [
     {
+      "id": "met",
+      "date": "2024-03-14",
+      "displayDate": "March 14, 2024",
+      "title": "The First Spark 💫",
+      "caption": "Our eyes met and a quiet tea talk turned into hours of endless laughter. The universe quietly knew we were meant for each other.",
+      "photo": "assets/images/milestone-met.png",
+      "completed": true,
+      "badge": "Chapter 1 • Unlocked",
+      "type": "story"
+    },
+    {
+      "id": "ghuraghuri",
+      "date": "2024-08-20",
+      "displayDate": "August 20, 2024",
+      "title": "First Ghuraghuri Wandering 🌿",
+      "caption": "Exploring nature paths hand in hand. She lost her way three times, but having her beside me made getting lost the best part of the trip.",
+      "photo": "assets/images/milestone-ghuraghuri.png",
+      "completed": true,
+      "badge": "Adventure • Unlocked",
+      "type": "story"
+    },
+    {
+      "id": "cats",
+      "date": "2025-01-10",
+      "displayDate": "January 10, 2025",
+      "title": "The Cat Companion Encounter 🐾",
+      "caption": "Stopping by a quiet garden corner where a stray kitten ran up to Oaeshi. Seeing her gentle heart with animals made me fall even deeper.",
+      "photo": "assets/images/milestone-cats.png",
+      "completed": true,
+      "badge": "Pure Warmth • Unlocked",
+      "type": "story"
+    },
+    {
+      "id": "gaming",
+      "date": "2025-05-04",
+      "displayDate": "May 4, 2025",
+      "title": "Late Night Gaming & Late Calls 🎮",
+      "caption": "Khabbab teaching Oaeshi gaming tricks. Even when she accidentally hit her own teammate, her adorable giggle won every single match.",
+      "photo": "assets/images/hero-couple.png",
+      "completed": true,
+      "badge": "Co-Op Mode • Unlocked",
+      "type": "story"
+    },
+    {
+      "id": "honest-patchup",
+      "date": "2025-11-18",
+      "displayDate": "November 18, 2025",
+      "title": "The Honest Promise 🤝",
+      "caption": "Neither of us is perfect, but making up after a disagreement proved that love isn't about never fighting—it's about choosing each other every single time.",
+      "photo": "assets/images/hero-couple.png",
+      "completed": true,
+      "badge": "Real Love • Unlocked",
+      "type": "story"
+    },
+    {
       "id": "kabin",
       "date": "2026-06-19",
       "displayDate": "June 19, 2026",
-      "title": "Our Kabin (Nikah)",
-      "caption": "The sacred vow that tied our souls together under the grace of Allah.",
+      "title": "Our Kabin (Nikah) 💍",
+      "caption": "The sacred vow that tied our souls together under the grace of Allah. Sealed with tears of happiness and warm smiles.",
+      "photo": "assets/images/hero-couple.png",
       "completed": true,
       "badge": "Kabin Sealed 💍",
       "type": "kabin"
@@ -27,49 +83,78 @@
       "id": "holud",
       "date": "2026-07-23T18:00:00+06:00",
       "displayDate": "July 23, 2026",
-      "title": "Gaye Holud",
+      "title": "Gaye Holud 🌼",
       "caption": "Laughter, turmeric gold, marigolds, and the warmth of family preparing for our big union.",
       "venue": "Family Residence / Venue ✏️",
       "dressCode": "Turmeric Gold & Warm Yellows 🌼",
       "accentColor": "#E8A33D",
+      "completed": false,
+      "badge": "Tomorrow ✨",
       "type": "event"
     },
     {
       "id": "cholon",
       "date": "2026-07-24T18:00:00+06:00",
       "displayDate": "July 24, 2026",
-      "title": "Cholon",
-      "caption": "The sweet journey together into our new dawn surrounded by roses.",
+      "title": "Cholon 🌹",
+      "caption": "The sweet journey together into our new dawn surrounded by roses and well-wishes.",
       "venue": "Grand Event Hall ✏️",
       "dressCode": "Cholon Rose & Crimson 🌹",
       "accentColor": "#D8546F",
+      "completed": false,
+      "badge": "Next Up 🌹",
       "type": "event"
     },
     {
       "id": "boubad",
       "date": "2026-07-25T19:00:00+06:00",
       "displayDate": "July 25, 2026",
-      "title": "Boubad (Bou-Bhat)",
+      "title": "Boubad (Bou-Bhat) ✨",
       "caption": "Welcoming the new bride with open hearts, delicious feast, and everlasting celebration.",
       "venue": "Reception Banquet ✏️",
       "dressCode": "Royal Red & Gold ✨",
       "accentColor": "#A3243F",
+      "completed": false,
+      "badge": "Grand Finale ✨",
       "type": "event"
+    },
+    {
+      "id": "next-chapter",
+      "date": "2026-07-26",
+      "displayDate": "Beyond July 2026...",
+      "title": "The Next Chapter 🗺️",
+      "caption": "More memories loading... First anniversary, spontaneous trips, cozy rainy days, and a lifetime of adventures together.",
+      "completed": false,
+      "badge": "Forever Loading ⏳",
+      "type": "future"
     }
   ],
   "loveMessage": "Today is just the beginning of our forever trail. Every step with you feels like walking through a starlit garden where fireflies light up our dreams.",
   "bengaliQuote": "আমাদের গল্পটা শুরু হলো, যা চলবে চিরকাল... 💛",
   "reasons": [
-    "The way your eyes light up whenever we go on a random ghuraghuri trip.",
-    "How you love cats and notice every kitten along our walking path.",
+    "The way your eyes light up whenever we plan a random ghuraghuri trip.",
+    "How you love cats and notice every single kitten along our walking path.",
     "Your patient smile even when I get us lost on purpose just to spend more time with you.",
-    "The peaceful feeling in my heart when our Kabin was signed on June 19.",
-    "How you make every ordinary day feel like a magical fairy tale."
+    "The peaceful feeling in my heart when our Kabin paper was signed on June 19.",
+    "How you make every ordinary day feel like a magical fairy tale.",
+    "Your infectious giggle when I lose a game match on purpose to let you win.",
+    "The cute way you hold my hand tightly whenever we cross a busy street.",
+    "How you remember every small detail and date we ever shared.",
+    "Your kindness to stray animals and how your soft heart sparkles.",
+    "How beautiful you look when you wear warm yellow colors for Holud.",
+    "The quiet way we can sit together for hours without saying a word and feel complete.",
+    "Your hilarious inside jokes that only the two of us understand.",
+    "How you always know exactly how to cheer me up after a long day.",
+    "Your passion for nature, rain, and starry night skies.",
+    "How we can be totally honest, vulnerable, and real with each other.",
+    "The way you make my home feel like a sanctuary filled with warmth.",
+    "Your enthusiasm for trying new food spots and sweet desserts.",
+    "Because you are my best friend, my soulmate, and my forever adventure partner."
   ],
   "lockedChamber": {
     "passphraseHint": "Enter her favorite nickname or cat pet name (default: oaeshi)",
     "passphrase": "oaeshi",
     "title": "Just For My Oaeshi 🔒",
-    "content": "My dearest bby, this sacred corner is just for you. From the moment our Kabin was sealed on June 19 to our Holud and beyond, you are my home and my ultimate adventure. I promise to hold your hand, explore every trail, and love you forever."
+    "content": "My dearest Oaeshi (my bby, my love),\n\nIf you are reading this inside our locked chamber, it means you typed the key to my heart. From the moment our Kabin was sealed on June 19, 2026 to this very evening right before our Holud, my heart has known only one truth: you are my home, my peace, and my ultimate adventure.\n\nWe are not perfect, and life won't always be a smooth paved road—we will have random disagreements, silly lost turns during our ghuraghuri trips, and late-night gaming battles. But I promise to always choose you, listen to you, protect your happy smile, and walk hand-in-hand with you through every garden and every storm.\n\nThank you for loving me as Khabbab. Today is just the beginning of our forever trail.\n\nForever yours,\nKhabbab 💛"
   }
 }

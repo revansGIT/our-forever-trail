@@ -120,6 +120,36 @@ function populateData(data) {
   if (bengaliQuote && data.bengaliQuote) {
     bengaliQuote.textContent = data.bengaliQuote;
   }
+
+  // Render Relationship Timeline Milestones
+  if (data.milestones && Array.isArray(data.milestones)) {
+    renderTimeline(data.milestones);
+  }
+}
+
+function renderTimeline(milestones) {
+  const container = document.getElementById('timeline-grid');
+  if (!container) return;
+
+  container.innerHTML = '';
+  milestones.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'timeline-item-card';
+
+    const photoHtml = m.photo
+      ? `<div class="timeline-img-wrap"><img src="${m.photo}" alt="${m.title}" loading="lazy"></div>`
+      : '';
+
+    card.innerHTML = `
+      <span class="timeline-card-badge">${m.badge || 'Memory Unlocked'}</span>
+      ${photoHtml}
+      <div class="timeline-date">${m.displayDate || m.date}</div>
+      <h3 class="timeline-title">${m.title}</h3>
+      <p class="timeline-caption">${m.caption}</p>
+    `;
+
+    container.appendChild(card);
+  });
 }
 
 /* --------------------------------------------------------------------------
