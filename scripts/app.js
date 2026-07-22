@@ -275,26 +275,81 @@ function initLockedChamber(data) {
 }
 
 /* --------------------------------------------------------------------------
-   6. Cat Companion Easter Egg
+   6. Anime Neko Companion & Paw Prints Trail Engine
    -------------------------------------------------------------------------- */
 function initCatCompanion() {
   const catBar = document.getElementById('cat-companion');
   const bubble = document.getElementById('cat-bubble');
 
-  const catPuns = [
-    "Meow! You two are purr-fect together! 🐾",
-    "Khabbab + Oaeshi = Forever Love! 😸",
-    "Paw-sitively excited for Holud tomorrow! 🌼",
-    "Nap time completed. Trail walk resumed! 🐾",
-    "Keep walking hand in hand! 🐈"
+  const stickyBtn = document.getElementById('neko-btn');
+  const stickyBubble = document.getElementById('neko-bubble');
+
+  const nekoQuotes = [
+    "Nyan! Khabbab & Oaeshi are a purr-fect pair! 🐾",
+    "Holud tomorrow! Yellow marigolds everywhere~ 🌼",
+    "Hajj & Umrah dream ahead! Makkah & Madinah 🕋✨",
+    "Ghuraghuri wandering adventure loading... 🗺️",
+    "Napping on a warm cushion... Zzz~ 😸",
+    "June 19, 2026: The day it all began! 💍"
   ];
 
-  let catIdx = 0;
+  let quoteIdx = 0;
 
-  if (catBar && bubble) {
-    catBar.addEventListener('click', () => {
-      catIdx = (catIdx + 1) % catPuns.length;
-      bubble.textContent = catPuns[catIdx];
-    });
+  function triggerNekoQuote() {
+    quoteIdx = (quoteIdx + 1) % nekoQuotes.length;
+    const msg = nekoQuotes[quoteIdx];
+    
+    if (bubble) bubble.textContent = msg;
+    if (stickyBubble) {
+      stickyBubble.textContent = msg;
+      stickyBubble.classList.add('active');
+      setTimeout(() => {
+        stickyBubble.classList.remove('active');
+      }, 4500);
+    }
   }
+
+  if (catBar) catBar.addEventListener('click', triggerNekoQuote);
+  if (stickyBtn) stickyBtn.addEventListener('click', triggerNekoQuote);
+
+  // Initialize Scroll Paw Print Trail
+  initScrollPawPrints();
+}
+
+function initScrollPawPrints() {
+  let lastScrollY = window.scrollY;
+  let distanceCounter = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    const delta = Math.abs(currentScrollY - lastScrollY);
+    distanceCounter += delta;
+    lastScrollY = currentScrollY;
+
+    // Spawn a paw print every 160px scrolled
+    if (distanceCounter > 160) {
+      distanceCounter = 0;
+      spawnPawPrint();
+    }
+  }, { passive: true });
+}
+
+function spawnPawPrint() {
+  const paw = document.createElement('div');
+  paw.className = 'scroll-paw-print';
+  paw.innerHTML = '🐾';
+
+  // Spawn paw near the right or left edge of the trail randomly
+  const sideRight = Math.random() > 0.5;
+  const xOffset = sideRight ? (window.innerWidth - 60 - Math.random() * 80) : (40 + Math.random() * 80);
+  const yOffset = window.innerHeight - 100 - Math.random() * 50;
+
+  paw.style.left = `${xOffset}px`;
+  paw.style.top = `${yOffset}px`;
+
+  document.body.appendChild(paw);
+
+  setTimeout(() => {
+    paw.remove();
+  }, 1600);
 }
