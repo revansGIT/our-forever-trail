@@ -8,9 +8,14 @@
   },
   "dates": {
     "kabin": "2026-06-19",
-    "holud": "2026-07-23T18:00:00+06:00",
-    "cholon": "2026-07-24T18:00:00+06:00",
-    "boubad": "2026-07-25T19:00:00+06:00"
+    "mehediStart": "2026-07-22T10:00:00+06:00",
+    "mehediEnd": "2026-07-22T23:59:59+06:00",
+    "holudStart": "2026-07-23T18:00:00+06:00",
+    "holudEnd": "2026-07-23T23:59:59+06:00",
+    "cholonStart": "2026-07-24T18:00:00+06:00",
+    "cholonEnd": "2026-07-24T23:59:59+06:00",
+    "boubadStart": "2026-07-25T19:00:00+06:00",
+    "boubadEnd": "2026-07-25T23:59:59+06:00"
   },
   "milestones": [
     {
@@ -23,6 +28,19 @@
       "completed": true,
       "badge": "First Met & Sealed 💍",
       "type": "kabin"
+    },
+    {
+      "id": "mehedi",
+      "date": "2026-07-22T10:00:00+06:00",
+      "displayDate": "July 22, 2026 (Today)",
+      "title": "Mehedi Night 🌿",
+      "caption": "Intricate henna designs, warm smiles, family chatter, and fragrant herbal stains.",
+      "venue": "Family Residence / Henna Lounge 🌿",
+      "dressCode": "Deep Olive & Henna Green 🍃",
+      "accentColor": "#5C8B72",
+      "completed": false,
+      "badge": "Today 🌿",
+      "type": "event"
     },
     {
       "id": "holud",
@@ -117,10 +135,11 @@
       "type": "future"
     }
   ],
-  "loveMessage": "Our story began on June 19, 2026 when our families brought us together. From our first conversation on our Kabin day to our shared dreams of Hajj, Umrah, and adventure trips, every step forward is written with love.",
-  "bengaliQuote": "১৯ জুন থেকে শুরু আমাদের যৌথ পথচলা... হজ্জ, উমরাহ আর হাজারও স্বপ্নের পানে! 💛",
+  "loveMessage": "Our story began on June 19, 2026 when our families brought us together. From our first conversation on our Kabin day to our Mehedi, Holud, and shared dreams of Hajj & Umrah, every step forward is written with love.",
+  "bengaliQuote": "আজ আমাদের মেহেদী সন্ধ্যা, আগামী দিনে উমরাহ ও হাজারও স্বপ্নের পানে... 💛",
   "reasons": [
     "The peaceful feeling when we met and talked for the very first time on June 19 during our Kabin.",
+    "The excitement of our Mehedi night today with henna fragrance and warm smiles 🌿.",
     "Our shared dream of performing Hajj and Umrah together in Makkah & Madinah 🕋.",
     "Your excitement for future ghuraghuri travel trips across beautiful nature paths 🌿.",
     "How much you love cats and how cute our future home will be with a little fluffy companion 🐾.",
@@ -140,6 +159,6 @@
     "passphraseHint": "Enter her nickname (default: oaeshi)",
     "passphrase": "oaeshi",
     "title": "Just For My Oaeshi 🔒",
-    "content": "Dearest Oaeshi (my bby, my wife),\n\nWhen our families brought us together and we met and talked for the first time on June 19, 2026, my heart felt a quiet peace. That day, our Kabin was sealed, and our true journey began.\n\nAll our greatest adventures are still waiting ahead of us—standing side by side in Makkah for Umrah and Hajj, going on spontaneous ghuraghuri travel trips, adopting a little kitten for our home, and laughing together late at night.\n\nI promise to honor our sacred vow, respect you, protect your happiness, and walk this trail with you forever.\n\nWith all my love,\nKhabbab 💛"
+    "content": "Dearest Oaeshi (my bby, my wife),\n\nToday is our Mehedi night, and as the henna colors your hands, my heart overflows with gratitude. From our first conversation on June 19 to this moment, I thank Allah for bringing us together.\n\nAhead of us lie Holud, Cholon, Boubad, and a lifetime of shared dreams—performing Hajj and Umrah, going on spontaneous ghuraghuri trips, and adopting our little kitten.\n\nI promise to hold your hand through every chapter of our forever trail.\n\nWith all my love,\nKhabbab 💛"
   }
 }

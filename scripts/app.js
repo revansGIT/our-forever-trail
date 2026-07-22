@@ -153,22 +153,27 @@ function renderTimeline(milestones) {
 }
 
 /* --------------------------------------------------------------------------
-   3. Live Countdown Engine for Holud, Cholon & Boubad
+   3. Smart Dual Countdown Engine for Mehedi, Holud, Cholon & Boubad
    -------------------------------------------------------------------------- */
 function initCountdowns(data) {
-  // Target event dates (Dhaka Time GMT+6)
-  const defaultTargetHolud = new Date('2026-07-23T18:00:00+06:00').getTime();
-  const defaultTargetCholon = new Date('2026-07-24T18:00:00+06:00').getTime();
-  const defaultTargetBoubad = new Date('2026-07-25T19:00:00+06:00').getTime();
+  const mehediStart = data?.dates?.mehediStart || '2026-07-22T10:00:00+06:00';
+  const mehediEnd = data?.dates?.mehediEnd || '2026-07-22T23:59:59+06:00';
 
-  const targetHolud = data?.dates?.holud ? new Date(data.dates.holud).getTime() : defaultTargetHolud;
-  const targetCholon = data?.dates?.cholon ? new Date(data.dates.cholon).getTime() : defaultTargetCholon;
-  const targetBoubad = data?.dates?.boubad ? new Date(data.dates.boubad).getTime() : defaultTargetBoubad;
+  const holudStart = data?.dates?.holudStart || '2026-07-23T18:00:00+06:00';
+  const holudEnd = data?.dates?.holudEnd || '2026-07-23T23:59:59+06:00';
 
-  function updateCard(prefix, targetTime) {
+  const cholonStart = data?.dates?.cholonStart || '2026-07-24T18:00:00+06:00';
+  const cholonEnd = data?.dates?.cholonEnd || '2026-07-24T23:59:59+06:00';
+
+  const boubadStart = data?.dates?.boubadStart || '2026-07-25T19:00:00+06:00';
+  const boubadEnd = data?.dates?.boubadEnd || '2026-07-25T23:59:59+06:00';
+
+  function updateSmartEvent(prefix, defaultTitle, startIso, endIso) {
     const now = new Date().getTime();
-    const diff = targetTime - now;
+    const startTime = new Date(startIso).getTime();
+    const endTime = new Date(endIso).getTime();
 
+    const tagEl = document.getElementById(`${prefix}-tag`);
     const daysEl = document.getElementById(`${prefix}-days`);
     const hoursEl = document.getElementById(`${prefix}-hours`);
     const minsEl = document.getElementById(`${prefix}-mins`);
@@ -176,29 +181,46 @@ function initCountdowns(data) {
 
     if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
 
-    if (diff <= 0) {
+    if (now < startTime) {
+      // Event hasn't started yet: Countdown to START
+      const diff = startTime - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      if (tagEl) tagEl.innerHTML = `${defaultTitle} • Starts In`;
+      daysEl.textContent = String(days).padStart(2, '0');
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minsEl.textContent = String(mins).padStart(2, '0');
+      secsEl.textContent = String(secs).padStart(2, '0');
+    } else if (now >= startTime && now <= endTime) {
+      // Event IS IN PROGRESS! Countdown to END
+      const diff = endTime - now;
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      if (tagEl) tagEl.innerHTML = `<span class="pulse-live">IN PROGRESS 🌿</span> Ends In`;
+      daysEl.textContent = '00';
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minsEl.textContent = String(mins).padStart(2, '0');
+      secsEl.textContent = String(secs).padStart(2, '0');
+    } else {
+      // Event COMPLETED
+      if (tagEl) tagEl.innerHTML = `${defaultTitle} • Completed ✅`;
       daysEl.textContent = '00';
       hoursEl.textContent = '00';
       minsEl.textContent = '00';
       secsEl.textContent = '00';
-      return;
     }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-    daysEl.textContent = String(days).padStart(2, '0');
-    hoursEl.textContent = String(hours).padStart(2, '0');
-    minsEl.textContent = String(mins).padStart(2, '0');
-    secsEl.textContent = String(secs).padStart(2, '0');
   }
 
   function tick() {
-    updateCard('holud', targetHolud);
-    updateCard('cholon', targetCholon);
-    updateCard('boubad', targetBoubad);
+    updateSmartEvent('mehedi', 'Mehedi 🌿', mehediStart, mehediEnd);
+    updateSmartEvent('holud', 'Gaye Holud 🌼', holudStart, holudEnd);
+    updateSmartEvent('cholon', 'Cholon 🌹', cholonStart, cholonEnd);
+    updateSmartEvent('boubad', 'Boubad ✨', boubadStart, boubadEnd);
   }
 
   tick();

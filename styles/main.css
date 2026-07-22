@@ -301,6 +301,7 @@ h1, h2, h3, h4 {
   height: 4px;
 }
 
+.countdown-card.mehedi::before { background: var(--leaf-whisper); }
 .countdown-card.holud::before { background: var(--gold-turmeric); }
 .countdown-card.cholon::before { background: var(--rose-cholon); }
 .countdown-card.boubad::before { background: var(--red-boubad); }
@@ -314,9 +315,26 @@ h1, h2, h3, h4 {
   margin-bottom: 1.5rem;
 }
 
+.countdown-card.mehedi .event-tag { color: var(--leaf-whisper); }
 .countdown-card.holud .event-tag { color: var(--gold-turmeric); }
 .countdown-card.cholon .event-tag { color: var(--rose-cholon); }
 .countdown-card.boubad .event-tag { color: var(--red-boubad); }
+
+.pulse-live {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  background: rgba(92, 139, 114, 0.25);
+  border: 1px solid var(--leaf-whisper);
+  color: #72cfa1;
+  font-weight: 600;
+  animation: livePulse 1.8s infinite ease-in-out;
+}
+
+@keyframes livePulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(92, 139, 114, 0.4); opacity: 1; }
+  50% { box-shadow: 0 0 18px rgba(92, 139, 114, 0.9); opacity: 0.8; }
+}
 
 .event-tag {
   font-size: 0.8rem;
