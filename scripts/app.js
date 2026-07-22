@@ -275,17 +275,17 @@ function initLockedChamber(data) {
 }
 
 /* --------------------------------------------------------------------------
-   6. Anime Neko Companion & Paw Prints Trail Engine
+   6. Dynamic Trail Cat Companion Follower Engine
    -------------------------------------------------------------------------- */
 function initCatCompanion() {
-  const catBar = document.getElementById('cat-companion');
-  const bubble = document.getElementById('cat-bubble');
+  const catFollower = document.getElementById('trail-cat-follower');
+  const catAvatar = document.getElementById('trail-cat-avatar');
+  const catBubble = document.getElementById('trail-cat-bubble');
 
-  const stickyBtn = document.getElementById('neko-btn');
-  const stickyBubble = document.getElementById('neko-bubble');
+  if (!catFollower || !catAvatar) return;
 
   const nekoQuotes = [
-    "Nyan! Khabbab & Oaeshi are a purr-fect pair! 🐾",
+    "Nyan! Walking the trail with Khabbab & Oaeshi~ 🐾",
     "Holud tomorrow! Yellow marigolds everywhere~ 🌼",
     "Hajj & Umrah dream ahead! Makkah & Madinah 🕋✨",
     "Ghuraghuri wandering adventure loading... 🗺️",
@@ -295,59 +295,49 @@ function initCatCompanion() {
 
   let quoteIdx = 0;
 
-  function triggerNekoQuote() {
+  catAvatar.addEventListener('click', () => {
     quoteIdx = (quoteIdx + 1) % nekoQuotes.length;
-    const msg = nekoQuotes[quoteIdx];
-    
-    if (bubble) bubble.textContent = msg;
-    if (stickyBubble) {
-      stickyBubble.textContent = msg;
-      stickyBubble.classList.add('active');
+    if (catBubble) {
+      catBubble.textContent = nekoQuotes[quoteIdx];
+      catBubble.style.transform = 'scale(1.08)';
       setTimeout(() => {
-        stickyBubble.classList.remove('active');
-      }, 4500);
+        catBubble.style.transform = 'scale(1)';
+      }, 300);
+    }
+  });
+
+  // Track scroll position and move cat along the trail
+  let lastY = 0;
+  function updateCatPosition() {
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollableHeight <= 0) return;
+
+    const scrollFraction = window.scrollY / scrollableHeight;
+    // Move cat smoothly between top offset (20px) and bottom offset (window.innerHeight - 150px)
+    const maxTravel = window.innerHeight - 180;
+    const catY = scrollFraction * maxTravel;
+
+    catFollower.style.transform = `translateY(${catY}px)`;
+
+    // Spawn paw prints right behind the cat when scrolling
+    if (Math.abs(window.scrollY - lastY) > 120) {
+      lastY = window.scrollY;
+      spawnPawPrintAtCat(catFollower);
     }
   }
 
-  const speakBtn = document.getElementById('neko-speak-btn');
-  if (catBar) catBar.addEventListener('click', triggerNekoQuote);
-  if (stickyBtn) stickyBtn.addEventListener('click', triggerNekoQuote);
-  if (speakBtn) speakBtn.addEventListener('click', triggerNekoQuote);
-
-  // Initialize Scroll Paw Print Trail
-  initScrollPawPrints();
+  window.addEventListener('scroll', updateCatPosition, { passive: true });
+  updateCatPosition();
 }
 
-function initScrollPawPrints() {
-  let lastScrollY = window.scrollY;
-  let distanceCounter = 0;
-
-  window.addEventListener('scroll', () => {
-    const currentScrollY = window.scrollY;
-    const delta = Math.abs(currentScrollY - lastScrollY);
-    distanceCounter += delta;
-    lastScrollY = currentScrollY;
-
-    // Spawn a paw print every 160px scrolled
-    if (distanceCounter > 160) {
-      distanceCounter = 0;
-      spawnPawPrint();
-    }
-  }, { passive: true });
-}
-
-function spawnPawPrint() {
+function spawnPawPrintAtCat(catElement) {
+  const rect = catElement.getBoundingClientRect();
   const paw = document.createElement('div');
   paw.className = 'scroll-paw-print';
   paw.innerHTML = '🐾';
 
-  // Spawn paw near the right or left edge of the trail randomly
-  const sideRight = Math.random() > 0.5;
-  const xOffset = sideRight ? (window.innerWidth - 60 - Math.random() * 80) : (40 + Math.random() * 80);
-  const yOffset = window.innerHeight - 100 - Math.random() * 50;
-
-  paw.style.left = `${xOffset}px`;
-  paw.style.top = `${yOffset}px`;
+  paw.style.left = `${rect.left + 10}px`;
+  paw.style.top = `${rect.top - 15}px`;
 
   document.body.appendChild(paw);
 
