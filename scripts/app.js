@@ -309,8 +309,10 @@ function initCatCompanion() {
     }
   }
 
+  const speakBtn = document.getElementById('neko-speak-btn');
   if (catBar) catBar.addEventListener('click', triggerNekoQuote);
   if (stickyBtn) stickyBtn.addEventListener('click', triggerNekoQuote);
+  if (speakBtn) speakBtn.addEventListener('click', triggerNekoQuote);
 
   // Initialize Scroll Paw Print Trail
   initScrollPawPrints();
