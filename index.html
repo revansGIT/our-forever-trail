@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Hind+Siliguri:wght@400;600&family=Nunito:wght@300;400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <!-- CSS Design System -->
-  <link rel="stylesheet" href="styles/main.css?v=5.0">
+  <link rel="stylesheet" href="styles/main.css?v=6.0">
 </head>
 <body>
 
@@ -293,6 +293,54 @@
       </div>
     </section>
 
+    <!-- RSVP & GUESTBOOK WELL-WISHES SECTION (PHASE 8) -->
+    <section class="section" id="guestbook-section">
+      <div class="section-title-wrap">
+        <span class="sub-label">Family & Friends Blessings</span>
+        <h2>Guestbook & RSVP</h2>
+      </div>
+
+      <div class="guestbook-container">
+        <!-- RSVP Form Card -->
+        <div class="guestbook-card">
+          <h3 style="font-size: 1.4rem; color: var(--gold-turmeric); margin-bottom: 0.4rem;">Send Blessings & RSVP 💌</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Leave your warm wishes for Khabbab & Oaeshi and let us know you're celebrating with us!</p>
+
+          <form id="guestbook-form">
+            <div class="form-group">
+              <label for="gb-name">Your Name</label>
+              <input type="text" id="gb-name" class="form-input" placeholder="e.g. Uncle Farhan & Family" required>
+            </div>
+
+            <div class="form-group">
+              <label for="gb-relation">Relationship</label>
+              <select id="gb-relation" class="form-select">
+                <option value="Family 🌼">Family 🌼</option>
+                <option value="Friends 🌿">Friends 🌿</option>
+                <option value="Well-Wisher ✨">Well-Wisher ✨</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="gb-message">Warm Wish / Blessing</label>
+              <textarea id="gb-message" class="form-textarea" rows="3" placeholder="Write your heartfelt blessing..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%; margin-top: 0.5rem;">Send Blessing & RSVP ✦</button>
+            <div id="gb-success" style="color: #4CAF50; font-size: 0.88rem; margin-top: 0.8rem; display: none; text-align: center;"></div>
+          </form>
+        </div>
+
+        <!-- Live Well-Wishes Feed Card -->
+        <div class="guestbook-card">
+          <h3 style="font-size: 1.4rem; color: var(--gold-turmeric); margin-bottom: 1rem;">Well-Wishes Feed 📜</h3>
+          <div class="guestbook-feed-grid" id="guestbook-feed">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- LOVE MESSAGE SECTION -->
     <section class="section">
       <div class="love-quote-card">
@@ -390,6 +438,6 @@
   </div>
 
   <!-- JavaScript Modules -->
-  <script src="scripts/app.js?v=5.0"></script>
+  <script src="scripts/app.js?v=6.0"></script>
 </body>
 </html>

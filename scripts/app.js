@@ -20,13 +20,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 3. Initialize Live Countdown Engines
   initCountdowns(appData);
 
-  // 4. Initialize Interactive Features & Engines (Phases 5, 6 & 7)
+  // 4. Initialize Interactive Features & Engines (Phases 5, 6, 7 & 8)
   initReasonGenerator(appData);
   initLockedChamber(appData);
   initCatCompanion();
   initWeatherWidget(appData);
   initEventModals(appData);
   initGallery(appData);
+  initGuestbook(appData);
 });
 
 /* --------------------------------------------------------------------------
@@ -603,4 +604,77 @@ function spawnPawPrintAtCat(catElement) {
   setTimeout(() => {
     paw.remove();
   }, 1400);
+}
+
+/* --------------------------------------------------------------------------
+   10. Guestbook & Live RSVP Well-Wishes Feed (Phase 8)
+   -------------------------------------------------------------------------- */
+function initGuestbook(data) {
+  const form = document.getElementById('guestbook-form');
+  const feed = document.getElementById('guestbook-feed');
+  const nameInput = document.getElementById('gb-name');
+  const relInput = document.getElementById('gb-relation');
+  const msgInput = document.getElementById('gb-message');
+  const successMsg = document.getElementById('gb-success');
+
+  const defaultEntries = data?.guestbook || [];
+  const storedEntries = JSON.parse(localStorage.getItem('our_forever_trail_guestbook') || '[]');
+  const allEntries = [...storedEntries, ...defaultEntries];
+
+  function renderFeed() {
+    if (!feed) return;
+    feed.innerHTML = '';
+
+    allEntries.forEach(entry => {
+      const card = document.createElement('div');
+      card.className = 'guestbook-note-card';
+      card.innerHTML = `
+        <div class="note-header">
+          <span class="note-author">${entry.name}</span>
+          <span class="note-badge">${entry.relation || 'Well-Wisher'}</span>
+        </div>
+        <div class="note-message">"${entry.message}"</div>
+        <div class="note-date">${entry.date || 'July 22, 2026'}</div>
+      `;
+      feed.appendChild(card);
+    });
+  }
+
+  if (form && nameInput && msgInput) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = nameInput.value.trim();
+      const relation = relInput ? relInput.value : 'Well-Wisher ✨';
+      const message = msgInput.value.trim();
+
+      if (!name || !message) return;
+
+      const newEntry = {
+        id: 'user_' + Date.now(),
+        name,
+        relation,
+        message,
+        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+      };
+
+      allEntries.unshift(newEntry);
+      storedEntries.unshift(newEntry);
+      localStorage.setItem('our_forever_trail_guestbook', JSON.stringify(storedEntries));
+
+      renderFeed();
+
+      if (successMsg) {
+        successMsg.textContent = '✦ Thank you! Your warm wish & blessing is live on the feed! 💛';
+        successMsg.style.display = 'block';
+        setTimeout(() => {
+          successMsg.style.display = 'none';
+        }, 4000);
+      }
+
+      form.reset();
+    });
+  }
+
+  renderFeed();
 }

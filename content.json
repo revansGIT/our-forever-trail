@@ -75,6 +75,22 @@
       "mapQuery": "Dhaka, Bangladesh"
     }
   },
+  "guestbook": [
+    {
+      "id": "w1",
+      "name": "Family & Cousins",
+      "relation": "Family 🌼",
+      "message": "Sending all our love and blessings to Khabbab & Oaeshi! May your marriage be filled with endless joy, faith, and peace.",
+      "date": "July 22, 2026"
+    },
+    {
+      "id": "w2",
+      "name": "Friends Circle",
+      "relation": "Friends 🌿",
+      "message": "Super excited for Holud tomorrow and the big reception! Wishing you both a lifetime of ghuraghuri adventures!",
+      "date": "July 22, 2026"
+    }
+  ],
   "gallery": [
     {
       "id": "g1",
