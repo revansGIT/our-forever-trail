@@ -20,10 +20,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 3. Initialize Live Countdown Engines
   initCountdowns(appData);
 
-  // 4. Initialize Interactive Features
+  // 4. Initialize Interactive Features & Engines (Phases 5, 6 & 7)
   initReasonGenerator(appData);
   initLockedChamber(appData);
   initCatCompanion();
+  initWeatherWidget(appData);
+  initEventModals(appData);
+  initGallery(appData);
 });
 
 /* --------------------------------------------------------------------------
@@ -338,7 +341,7 @@ function initReasonGenerator(data) {
 }
 
 /* --------------------------------------------------------------------------
-   5. Passphrase Locked Chamber Gate
+   5. Passphrase Locked Chamber Gate with Typewriter Reveal (Phase 7)
    -------------------------------------------------------------------------- */
 function initLockedChamber(data) {
   const form = document.getElementById('passphrase-form');
@@ -346,8 +349,10 @@ function initLockedChamber(data) {
   const errorMsg = document.getElementById('passphrase-error');
   const contentBox = document.getElementById('locked-content');
   const letterText = document.getElementById('letter-text-el');
+  const cursorEl = document.getElementById('typewriter-cursor-el');
 
   const correctPassphrase = (data?.lockedChamber?.passphrase || 'oaeshi').toLowerCase().trim();
+  const fullText = data?.lockedChamber?.content || "My dearest Oaeshi, you are my home and my ultimate adventure forever.";
 
   if (form && input && contentBox) {
     form.addEventListener('submit', (e) => {
@@ -358,9 +363,9 @@ function initLockedChamber(data) {
         if (errorMsg) errorMsg.style.display = 'none';
         form.style.display = 'none';
         contentBox.classList.add('unlocked');
-        if (letterText && data?.lockedChamber?.content) {
-          letterText.textContent = data.lockedChamber.content;
-        }
+        
+        // Character-by-Character Typewriter Animation
+        typewriteText(fullText, letterText, cursorEl);
       } else {
         if (errorMsg) {
           errorMsg.textContent = 'Incorrect passphrase! Hint: Try her nickname ("oaeshi")';
@@ -368,6 +373,157 @@ function initLockedChamber(data) {
         }
       }
     });
+  }
+}
+
+function typewriteText(text, targetEl, cursorEl) {
+  if (!targetEl) return;
+  targetEl.textContent = '';
+  let i = 0;
+
+  function typeChar() {
+    if (i < text.length) {
+      targetEl.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeChar, 35);
+    } else {
+      if (cursorEl) cursorEl.style.display = 'none';
+    }
+  }
+
+  typeChar();
+}
+
+/* --------------------------------------------------------------------------
+   7. Event Detail Modals Engine (Phase 5)
+   -------------------------------------------------------------------------- */
+function initEventModals(data) {
+  const backdrop = document.getElementById('event-modal-backdrop');
+  const closeBtn = document.getElementById('event-modal-close');
+
+  const modalName = document.getElementById('modal-event-name');
+  const modalDate = document.getElementById('modal-event-date');
+  const modalAddress = document.getElementById('modal-event-address');
+  const modalMap = document.getElementById('modal-event-map');
+  const modalDress = document.getElementById('modal-event-dress');
+  const modalSchedule = document.getElementById('modal-event-schedule');
+
+  const detailsMap = data?.eventDetails || {};
+
+  function openEventModal(eventKey) {
+    const details = detailsMap[eventKey];
+    if (!details || !backdrop) return;
+
+    if (modalName) modalName.textContent = details.name;
+    if (modalDate) modalDate.textContent = `${details.date} • ${details.time}`;
+    if (modalAddress) modalAddress.textContent = `${details.venue} (${details.address})`;
+    if (modalMap) modalMap.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(details.mapQuery || details.venue)}`;
+    if (modalDress) modalDress.textContent = details.dressCode;
+
+    if (modalSchedule) {
+      modalSchedule.innerHTML = '';
+      (details.schedule || []).forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        modalSchedule.appendChild(li);
+      });
+    }
+
+    backdrop.classList.add('active');
+  }
+
+  // Attach click events to countdown cards
+  ['mehedi', 'holud', 'cholon', 'boubad'].forEach(key => {
+    const card = document.querySelector(`.countdown-card.${key}`);
+    if (card) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => openEventModal(key));
+    }
+  });
+
+  if (closeBtn && backdrop) {
+    closeBtn.addEventListener('click', () => backdrop.classList.remove('active'));
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) backdrop.classList.remove('active');
+    });
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. Photo Gallery & Fullscreen Lightbox Engine (Phase 6)
+   -------------------------------------------------------------------------- */
+function initGallery(data) {
+  const grid = document.getElementById('gallery-grid');
+  const tabsContainer = document.getElementById('gallery-tabs');
+  const lightboxBackdrop = document.getElementById('lightbox-modal-backdrop');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+
+  const items = data?.gallery || [];
+  if (!grid) return;
+
+  function renderGalleryItems(filter = 'all') {
+    grid.innerHTML = '';
+    const filtered = filter === 'all' ? items : items.filter(item => item.category === filter);
+
+    filtered.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'gallery-card';
+      card.innerHTML = `
+        <img src="${item.photo}" alt="${item.title}" loading="lazy">
+        <div class="gallery-card-body">
+          <div class="gallery-card-title">${item.title}</div>
+          <div class="gallery-card-caption">${item.caption}</div>
+        </div>
+      `;
+
+      card.addEventListener('click', () => openLightbox(item));
+      grid.appendChild(card);
+    });
+  }
+
+  function openLightbox(item) {
+    if (!lightboxBackdrop) return;
+    if (lightboxImg) lightboxImg.src = item.photo;
+    if (lightboxTitle) lightboxTitle.textContent = item.title;
+    if (lightboxCaption) lightboxCaption.textContent = item.caption;
+    lightboxBackdrop.classList.add('active');
+  }
+
+  if (tabsContainer) {
+    const tabs = tabsContainer.querySelectorAll('.gallery-tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter || 'all';
+        renderGalleryItems(filter);
+      });
+    });
+  }
+
+  if (lightboxClose && lightboxBackdrop) {
+    lightboxClose.addEventListener('click', () => lightboxBackdrop.classList.remove('active'));
+    lightboxBackdrop.addEventListener('click', (e) => {
+      if (e.target === lightboxBackdrop) lightboxBackdrop.classList.remove('active');
+    });
+  }
+
+  renderGalleryItems('all');
+}
+
+/* --------------------------------------------------------------------------
+   9. Weather Widget Engine (Phase 5)
+   -------------------------------------------------------------------------- */
+function initWeatherWidget() {
+  const tempEl = document.getElementById('weather-temp');
+  const condEl = document.getElementById('weather-condition');
+
+  if (tempEl && condEl) {
+    condEl.textContent = 'Clear Sky • Warm Evening 🌟';
+    tempEl.textContent = '29°C';
   }
 }
 

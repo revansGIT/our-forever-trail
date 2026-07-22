@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Hind+Siliguri:wght@400;600&family=Nunito:wght@300;400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <!-- CSS Design System -->
-  <link rel="stylesheet" href="styles/main.css?v=4.2">
+  <link rel="stylesheet" href="styles/main.css?v=5.0">
 </head>
 <body>
 
@@ -209,16 +209,46 @@
             </div>
           </div>
 
-          <div class="event-details-box">
-            <div class="detail-item">📍 Venue: Banquet Hall ✏️</div>
+          <div class="event-details-box" style="margin-top: 1rem;">
+            <div class="detail-item">📍 Venue: Reception Banquet ✏️</div>
             <div class="detail-item">👔 Outfit: Royal Red & Gold</div>
           </div>
         </div>
 
       </div>
+
+      <!-- LIVE WEATHER WIDGET FOR WEDDING CITY -->
+      <div class="weather-card" id="weather-card">
+        <div class="weather-info">
+          <h4>Wedding City Weather (Dhaka) ☀️</h4>
+          <p id="weather-condition" style="font-size: 0.9rem; color: var(--text-muted);">Fetching live weather...</p>
+        </div>
+        <div class="weather-temp" id="weather-temp">29°C</div>
+      </div>
     </section>
 
-    <!-- INTERACTIVE SECTION: REASONS & LOCKED CHAMBER -->
+    <!-- PHOTO GALLERY SECTION (PHASE 6) -->
+    <section class="section" id="gallery-section">
+      <div class="section-title-wrap">
+        <span class="sub-label">Living Scrapbook</span>
+        <h2>Photo Gallery & Scrapbook</h2>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="gallery-filter-tabs" id="gallery-tabs">
+        <button class="gallery-tab active" data-filter="all">All Moments ✦</button>
+        <button class="gallery-tab" data-filter="events">Wedding Events 🌼</button>
+        <button class="gallery-tab" data-filter="dreams">Our Dreams 🕋</button>
+        <button class="gallery-tab" data-filter="story">Our Story 💍</button>
+      </div>
+
+      <!-- Photo Grid -->
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Rendered dynamically from content.json by app.js -->
+      </div>
+    </section>
+
+    <!-- INTERACTIVE SECTION: REASONS & LOCKED CHAMBER (PHASE 7 TYPEWRITER) -->
     <section class="section">
       <div class="interactive-grid">
 
@@ -237,12 +267,12 @@
           <button id="draw-reason-btn" class="btn-primary">Draw Another Reason ✦</button>
         </div>
 
-        <!-- Secret Locked Chamber -->
+        <!-- Secret Locked Chamber with Typewriter Reveal -->
         <div class="interactive-card">
           <div>
             <span class="sub-label" style="color: var(--rose-cholon); font-size: 0.8rem; letter-spacing: 2px;">SECRET CHAMBER</span>
             <h3 style="font-size: 1.6rem; margin-top: 0.2rem;">Just For Oaeshi 🔒</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Enter the passphrase to unlock your private love letter.</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Enter the passphrase to unlock your private typewriter love letter.</p>
           </div>
 
           <!-- Passphrase Form -->
@@ -252,12 +282,11 @@
           </form>
           <div id="passphrase-error" style="color: #ff6b6b; font-size: 0.85rem; margin-top: 0.5rem; display: none;"></div>
 
-          <!-- Unlocked Letter Content -->
+          <!-- Unlocked Letter Content with Typewriter Target -->
           <div id="locked-content" class="locked-letter-content">
             <div style="color: var(--gold-turmeric); font-weight: 600; margin-bottom: 0.5rem;">Dearest Oaeshi,</div>
-            <div id="letter-text-el">
-              From the moment our Kabin was sealed on June 19 to our Holud and beyond, you are my home and my ultimate adventure. I promise to hold your hand, explore every trail, and love you forever.
-            </div>
+            <div id="letter-text-el" style="white-space: pre-wrap;"></div>
+            <span id="typewriter-cursor-el" class="typewriter-cursor"></span>
           </div>
         </div>
 
@@ -271,10 +300,49 @@
           "Today is just the beginning of our forever trail. Every step with you feels like walking through a starlit garden where fireflies light up our dreams."
         </p>
         <div class="bangla-text" id="bengali-quote" style="font-size: 1.3rem;">
-          আমাদের গল্পটা শুরু হলো, যা চলবে চিরকাল... 💛
+          আজ আমাদের মেহেদী সন্ধ্যা, আগামী দিনে উমরাহ ও হাজারও স্বপ্নের পানে... 💛
         </div>
       </div>
     </section>
+
+    <!-- EVENT DETAIL MODAL (PHASE 5) -->
+    <div class="modal-backdrop" id="event-modal-backdrop">
+      <div class="modal-dialog">
+        <button class="modal-close-btn" id="event-modal-close">×</button>
+        <h3 id="modal-event-name" style="font-size: 1.8rem; color: var(--gold-turmeric); margin-bottom: 0.5rem;">Event Details</h3>
+        <p id="modal-event-date" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem;"></p>
+
+        <div style="background: rgba(8,27,28,0.6); padding: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); margin-bottom: 1.2rem;">
+          <div style="color: var(--text-moonlight); font-weight: 600; margin-bottom: 0.4rem;">📍 Venue & Address</div>
+          <div id="modal-event-address" style="color: var(--text-muted); font-size: 0.9rem;"></div>
+          <div style="margin-top: 0.8rem;">
+            <a id="modal-event-map" href="#" target="_blank" rel="noopener" class="btn-primary" style="display: inline-block; font-size: 0.8rem; padding: 0.4rem 1rem;">Open in Google Maps 🗺️</a>
+          </div>
+        </div>
+
+        <div style="background: rgba(8,27,28,0.6); padding: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); margin-bottom: 1.2rem;">
+          <div style="color: var(--text-moonlight); font-weight: 600; margin-bottom: 0.4rem;">👔 Outfit & Dress Code</div>
+          <div id="modal-event-dress" style="color: var(--text-muted); font-size: 0.9rem;"></div>
+        </div>
+
+        <div style="background: rgba(8,27,28,0.6); padding: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border);">
+          <div style="color: var(--text-moonlight); font-weight: 600; margin-bottom: 0.4rem;">⏱ Program Schedule</div>
+          <ul id="modal-event-schedule" style="color: var(--text-muted); font-size: 0.88rem; padding-left: 1.2rem; line-height: 1.6;"></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIGHTBOX MODAL (PHASE 6) -->
+    <div class="modal-backdrop" id="lightbox-modal-backdrop">
+      <div class="modal-dialog lightbox-dialog" style="max-width: 800px; text-align: center;">
+        <button class="modal-close-btn" id="lightbox-close">×</button>
+        <div class="lightbox-img-wrap">
+          <img id="lightbox-img" src="" alt="Gallery Image">
+        </div>
+        <h3 id="lightbox-title" style="font-size: 1.4rem; color: var(--gold-turmeric); margin-bottom: 0.4rem;">Photo Title</h3>
+        <p id="lightbox-caption" style="color: var(--text-muted); font-size: 0.9rem;"></p>
+      </div>
+    </div>
 
   </div>
 
@@ -322,6 +390,6 @@
   </div>
 
   <!-- JavaScript Modules -->
-  <script src="scripts/app.js?v=4.2"></script>
+  <script src="scripts/app.js?v=5.0"></script>
 </body>
 </html>

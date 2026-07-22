@@ -17,6 +17,108 @@
     "boubadStart": "2026-07-25T19:00:00+06:00",
     "boubadEnd": "2026-07-25T23:59:59+06:00"
   },
+  "eventDetails": {
+    "mehedi": {
+      "name": "Mehedi Night 🌿",
+      "date": "July 22, 2026 (Today)",
+      "time": "10:00 AM – 11:59 PM",
+      "venue": "Henna Lounge / Family Residence 🌿",
+      "address": "Dhaka, Bangladesh",
+      "dressCode": "Deep Olive, Henna Green & Botanical Shades 🍃",
+      "schedule": [
+        "10:00 AM — Family Gathering & Music",
+        "02:00 PM — Henna Application Begins",
+        "07:30 PM — Evening Feast & Celebration"
+      ],
+      "mapQuery": "Dhaka, Bangladesh"
+    },
+    "holud": {
+      "name": "Gaye Holud 🌼",
+      "date": "July 23, 2026 (Tomorrow)",
+      "time": "06:00 PM – 11:59 PM",
+      "venue": "Family Residence / Holud Hall 🌼",
+      "address": "Dhaka, Bangladesh",
+      "dressCode": "Turmeric Gold, Warm Yellows & Floral Accessories 🌼",
+      "schedule": [
+        "06:00 PM — Guest Arrival & Refreshments",
+        "07:00 PM — Turmeric Paste & Marigold Rituals",
+        "08:30 PM — Holud Feast & Cultural Performances"
+      ],
+      "mapQuery": "Dhaka, Bangladesh"
+    },
+    "cholon": {
+      "name": "Cholon Ceremony 🌹",
+      "date": "July 24, 2026",
+      "time": "06:00 PM – 11:59 PM",
+      "venue": "Grand Event Banquet 🌹",
+      "address": "Dhaka, Bangladesh",
+      "dressCode": "Cholon Rose, Crimson & Traditional Attire 🌹",
+      "schedule": [
+        "06:00 PM — Groom Procession Arrival",
+        "07:30 PM — Blessing Ceremony & Photos",
+        "09:00 PM — Dinner Banquet & Well-Wishes"
+      ],
+      "mapQuery": "Dhaka, Bangladesh"
+    },
+    "boubad": {
+      "name": "Boubad (Bou-Bhat) ✨",
+      "date": "July 25, 2026",
+      "time": "07:00 PM – 11:59 PM",
+      "venue": "Reception Convention Center ✨",
+      "address": "Dhaka, Bangladesh",
+      "dressCode": "Royal Red, Maroon & Gold Elegance ✨",
+      "schedule": [
+        "07:00 PM — Grand Reception Entry",
+        "08:15 PM — Bride Welcome Rituals",
+        "09:30 PM — Gala Feast & Celebration"
+      ],
+      "mapQuery": "Dhaka, Bangladesh"
+    }
+  },
+  "gallery": [
+    {
+      "id": "g1",
+      "category": "story",
+      "photo": "assets/images/hero-couple.png",
+      "title": "First Meeting & Sacred Kabin",
+      "caption": "June 19, 2026 — The memorable day our eyes met and our Kabin was sealed."
+    },
+    {
+      "id": "g2",
+      "category": "dreams",
+      "photo": "assets/images/milestone-umrah.png",
+      "title": "Hajj & Umrah Sacred Dream",
+      "caption": "Our deepest prayer: standing together in Makkah & Madinah under Allah's blessings."
+    },
+    {
+      "id": "g3",
+      "category": "dreams",
+      "photo": "assets/images/milestone-ghuraghuri.png",
+      "title": "Wandering & Traveling Trips",
+      "caption": "Exploring nature paths, sea beaches, and scenic views hand in hand."
+    },
+    {
+      "id": "g4",
+      "category": "dreams",
+      "photo": "assets/images/milestone-cats.png",
+      "title": "Cat Companion Wish",
+      "caption": "Building our cozy home and adopting a fluffy kitten companion."
+    },
+    {
+      "id": "g5",
+      "category": "events",
+      "photo": "assets/images/hero-couple.png",
+      "title": "Mehedi Celebration",
+      "caption": "Fragrant henna designs, family smiles, and botanical green attire."
+    },
+    {
+      "id": "g6",
+      "category": "events",
+      "photo": "assets/images/hero-couple.png",
+      "title": "Gaye Holud Preparations",
+      "caption": "Warm marigolds, turmeric gold, and joyous laughter."
+    }
+  ],
   "milestones": [
     {
       "id": "kabin-meeting",
