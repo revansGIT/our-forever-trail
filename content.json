@@ -1,0 +1,75 @@
+{
+  "couple": {
+    "him": "Khaled Osama Khabbab",
+    "himNickname": "Khabbab",
+    "her": "Fahmida Sheikh Oaeshi",
+    "herNickname": "Oaeshi",
+    "tagline": "Walking hand in hand through the starlit garden of forever."
+  },
+  "dates": {
+    "kabin": "2026-06-19",
+    "holud": "2026-07-23T18:00:00+06:00",
+    "cholon": "2026-07-24T18:00:00+06:00",
+    "boubad": "2026-07-25T19:00:00+06:00"
+  },
+  "milestones": [
+    {
+      "id": "kabin",
+      "date": "2026-06-19",
+      "displayDate": "June 19, 2026",
+      "title": "Our Kabin (Nikah)",
+      "caption": "The sacred vow that tied our souls together under the grace of Allah.",
+      "completed": true,
+      "badge": "Kabin Sealed 💍",
+      "type": "kabin"
+    },
+    {
+      "id": "holud",
+      "date": "2026-07-23T18:00:00+06:00",
+      "displayDate": "July 23, 2026",
+      "title": "Gaye Holud",
+      "caption": "Laughter, turmeric gold, marigolds, and the warmth of family preparing for our big union.",
+      "venue": "Family Residence / Venue ✏️",
+      "dressCode": "Turmeric Gold & Warm Yellows 🌼",
+      "accentColor": "#E8A33D",
+      "type": "event"
+    },
+    {
+      "id": "cholon",
+      "date": "2026-07-24T18:00:00+06:00",
+      "displayDate": "July 24, 2026",
+      "title": "Cholon",
+      "caption": "The sweet journey together into our new dawn surrounded by roses.",
+      "venue": "Grand Event Hall ✏️",
+      "dressCode": "Cholon Rose & Crimson 🌹",
+      "accentColor": "#D8546F",
+      "type": "event"
+    },
+    {
+      "id": "boubad",
+      "date": "2026-07-25T19:00:00+06:00",
+      "displayDate": "July 25, 2026",
+      "title": "Boubad (Bou-Bhat)",
+      "caption": "Welcoming the new bride with open hearts, delicious feast, and everlasting celebration.",
+      "venue": "Reception Banquet ✏️",
+      "dressCode": "Royal Red & Gold ✨",
+      "accentColor": "#A3243F",
+      "type": "event"
+    }
+  ],
+  "loveMessage": "Today is just the beginning of our forever trail. Every step with you feels like walking through a starlit garden where fireflies light up our dreams.",
+  "bengaliQuote": "আমাদের গল্পটা শুরু হলো, যা চলবে চিরকাল... 💛",
+  "reasons": [
+    "The way your eyes light up whenever we go on a random ghuraghuri trip.",
+    "How you love cats and notice every kitten along our walking path.",
+    "Your patient smile even when I get us lost on purpose just to spend more time with you.",
+    "The peaceful feeling in my heart when our Kabin was signed on June 19.",
+    "How you make every ordinary day feel like a magical fairy tale."
+  ],
+  "lockedChamber": {
+    "passphraseHint": "Enter her favorite nickname or cat pet name (default: oaeshi)",
+    "passphrase": "oaeshi",
+    "title": "Just For My Oaeshi 🔒",
+    "content": "My dearest bby, this sacred corner is just for you. From the moment our Kabin was sealed on June 19 to our Holud and beyond, you are my home and my ultimate adventure. I promise to hold your hand, explore every trail, and love you forever."
+  }
+}

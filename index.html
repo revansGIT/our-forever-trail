@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Forever Trail — Khabbab & Oaeshi</title>
+  <meta name="description" content="A romantic, expandable trail of love celebrating Khaled Osama Khabbab & Fahmida Sheikh Oaeshi.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Hind+Siliguri:wght@400;600&family=Nunito:wght@300;400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS Design System -->
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+  <!-- Background Fireflies Canvas -->
+  <canvas id="fireflies-canvas"></canvas>
+
+  <div class="app-container">
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+      <div class="hero-badge">✦ Our Forever Trail ✦</div>
+      <h1 class="script-names" id="hero-names">Khabbab & Oaeshi</h1>
+      <p class="hero-subtitle" id="hero-tagline">Walking hand in hand through the starlit garden of forever.</p>
+
+      <!-- Hero Image Showcase Frame -->
+      <div class="hero-image-frame">
+        <img src="assets/images/hero-couple.png" alt="Khabbab & Oaeshi in an enchanted night garden under moonlight" loading="eager">
+      </div>
+
+      <a href="#kabin-marker" class="hero-scroll-btn">
+        <span>Begin The Trail</span>
+        <span>↓</span>
+      </a>
+    </header>
+
+    <!-- KABIN COMPLETED CHECKPOINT -->
+    <section id="kabin-marker" class="section">
+      <div class="kabin-card">
+        <span class="kabin-badge">✦ Checkpoint Achieved • Kabin Sealed 💍</span>
+        <h2 class="kabin-title">Our Kabin (Nikah)</h2>
+        <div class="kabin-date">June 19, 2026</div>
+        <p style="color: var(--text-muted); max-width: 550px; margin: 0 auto;">
+          The sacred vow that tied our souls together under the grace of Allah. The beginning of our eternal journey.
+        </p>
+      </div>
+    </section>
+
+    <!-- TRIPLE WEDDING EVENT COUNTDOWNS -->
+    <section class="section">
+      <div class="section-title-wrap">
+        <span class="sub-label">Upcoming Wedding Milestones</span>
+        <h2>The Wedding Trail</h2>
+      </div>
+
+      <div class="countdowns-grid">
+        
+        <!-- 1. Gaye Holud -->
+        <div class="countdown-card holud">
+          <div class="countdown-header">
+            <span class="event-tag">Gaye Holud 🌼</span>
+            <h3 class="event-name">Holud Night</h3>
+            <div class="event-date-str">July 23, 2026</div>
+          </div>
+
+          <div class="timer-display">
+            <div class="time-box">
+              <div class="num" id="holud-days">00</div>
+              <div class="label">Days</div>
+            </div>
+            <div class="time-box">
+              <div class="num" id="holud-hours">00</div>
+              <div class="label">Hours</div>
+            </div>
+            <div class="time-box">
+              <div class="num" id="holud-mins">00</div>
+              <div class="label">Mins</div>
+            </div>
+            <div class="time-box">
+              <div class="num" id="holud-secs">00</div>
+              <div class="label">Secs</div>
+            </div>
+          </div>
+
+          <div class="event-details-box">
+            <div class="detail-item">📍 Venue: Family Residence ✏️</div>
+            <div class="detail-item">👔 Outfit: Turmeric Gold & Yellows</div>
+          </div>
+        </div>
+
+        <!-- 2. Cholon -->
+        <div class="countdown-card cholon">
+          <div class="countdown-header">
+            <span class="event-tag">Cholon 🌹</span>
+            <h3 class="event-name">Cholon Ceremony</h3>
+            <div class="event-date-str">July 24, 2026</div>
+          </div>
+
+          <div class="timer-display">
+            <div class="time-box">
+              <div class="num" id="cholon-days">00</div>
+              <div class="label">Days</div>
+            </div>
+            <div class="time-box">
+              <div class="num" id="cholon-hours">00</div>
+              <div class="label">Hours</div>
+            </div>
+            <div class="time-box">
+              <div class="num" id="cholon-mins">00</div>
+              <div class="label">Mins</div>
+            </div>
+            <div class="time-box">
+              <div class="num" id="cholon-secs">00</div>
+              <div class="label">Secs</div>
+            </div>
+          </div>
+
+          <div class="event-details-box">
+            <div class="detail-item">📍 Venue: Grand Event Hall ✏️</div>
+            <div class="detail-item">👔 Outfit: Cholon Rose & Crimson</div>
+          </div>
+        </div>
+
+        <!-- 3. Boubad -->
+        <div class="countdown-card boubad">
+          <div class="countdown-header">
+            <span class="event-tag">Boubad ✨</span>
+            <h3 class="event-name">Bou-Bhat Reception</h3>
+            <div class="event-date-str">July 25, 2026</div>
+          </div>
+
+          <div class="timer-display">
+            <div class="time-box">
+              <div class="num" id="boubad-days">00</div>
+              <div class="label">Days</div>
+            </div>
+            <div class="time-box">
+              <div class="num" id="boubad-hours">00</div>
+              <div class="label">Hours</div>
+            </div>
+            <div class="time-box">
+              <div class="num" id="boubad-mins">00</div>
+              <div class="label">Mins</div>
+            </div>
+            <div class="time-box">
+              <div class="num" id="boubad-secs">00</div>
+              <div class="label">Secs</div>
+            </div>
+          </div>
+
+          <div class="event-details-box">
+            <div class="detail-item">📍 Venue: Banquet Hall ✏️</div>
+            <div class="detail-item">👔 Outfit: Royal Red & Gold</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTERACTIVE SECTION: REASONS & LOCKED CHAMBER -->
+    <section class="section">
+      <div class="interactive-grid">
+
+        <!-- Why I Love You Generator -->
+        <div class="interactive-card">
+          <div>
+            <span class="sub-label" style="color: var(--gold-turmeric); font-size: 0.8rem; letter-spacing: 2px;">INTERACTIVE</span>
+            <h3 style="font-size: 1.6rem; margin-top: 0.2rem;">Why I Love You 💖</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Click the button below to draw one of the many reasons you mean the world to me.</p>
+          </div>
+
+          <div class="reason-box" id="reason-display">
+            "The way your eyes light up whenever we go on a random ghuraghuri trip."
+          </div>
+
+          <button id="draw-reason-btn" class="btn-primary">Draw Another Reason ✦</button>
+        </div>
+
+        <!-- Secret Locked Chamber -->
+        <div class="interactive-card">
+          <div>
+            <span class="sub-label" style="color: var(--rose-cholon); font-size: 0.8rem; letter-spacing: 2px;">SECRET CHAMBER</span>
+            <h3 style="font-size: 1.6rem; margin-top: 0.2rem;">Just For Oaeshi 🔒</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Enter the passphrase to unlock your private love letter.</p>
+          </div>
+
+          <!-- Passphrase Form -->
+          <form id="passphrase-form" class="passphrase-form">
+            <input type="password" id="passphrase-input" class="passphrase-input" placeholder="Passphrase (hint: oaeshi)" required>
+            <button type="submit" class="btn-primary" style="padding: 0.75rem 1.4rem;">Unlock</button>
+          </form>
+          <div id="passphrase-error" style="color: #ff6b6b; font-size: 0.85rem; margin-top: 0.5rem; display: none;"></div>
+
+          <!-- Unlocked Letter Content -->
+          <div id="locked-content" class="locked-letter-content">
+            <div style="color: var(--gold-turmeric); font-weight: 600; margin-bottom: 0.5rem;">Dearest Oaeshi,</div>
+            <div id="letter-text-el">
+              From the moment our Kabin was sealed on June 19 to our Holud and beyond, you are my home and my ultimate adventure. I promise to hold your hand, explore every trail, and love you forever.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LOVE MESSAGE & CAT COMPANION -->
+    <section class="section">
+      <div class="love-quote-card">
+        <p id="love-message">
+          "Today is just the beginning of our forever trail. Every step with you feels like walking through a starlit garden where fireflies light up our dreams."
+        </p>
+        <div class="bangla-text" id="bengali-quote" style="font-size: 1.3rem;">
+          আমাদের গল্পটা শুরু হলো, যা চলবে চিরকাল... 💛
+        </div>
+
+        <!-- Interactive Cat Companion -->
+        <div class="cat-companion-bar" id="cat-companion">
+          <svg class="cat-icon-svg" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="none"/>
+            <path d="M12 3c-4.42 0-8 3.58-8 8 0 3.1 1.76 5.79 4.34 7.15L7.5 21l3.5-1.5 3.5 1.5-.84-2.85C16.24 16.79 18 14.1 18 11c0-4.42-3.58-8-8-8zm-3 6.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5S9 10.33 9 9.5zm6 0c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5z"/>
+          </svg>
+          <div class="cat-speech-bubble" id="cat-bubble">
+            Meow! Tap me to hear cat companion messages! 🐾
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Made with 💛 for <strong>Khabbab & Oaeshi</strong></p>
+      <p style="font-size: 0.8rem; opacity: 0.7;">Today is July 22, 2026 • Holud is Tomorrow!</p>
+    </footer>
+
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="scripts/app.js"></script>
+</body>
+</html>

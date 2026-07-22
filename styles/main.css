@@ -1,0 +1,566 @@
+/* ==========================================================================
+   OUR FOREVER TRAIL — Design System & Main Stylesheet
+   Khaled Osama Khabbab & Fahmida Sheikh Oaeshi
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & CSS Custom Properties
+   -------------------------------------------------------------------------- */
+:root {
+  /* Colors */
+  --bg-night: #0E2E30;
+  --bg-night-deep: #081B1C;
+  --text-moonlight: #F7EFE3;
+  --text-muted: rgba(247, 239, 227, 0.75);
+  
+  --gold-turmeric: #E8A33D;
+  --gold-glow: rgba(232, 163, 61, 0.35);
+  
+  --rose-cholon: #D8546F;
+  --rose-glow: rgba(216, 84, 111, 0.35);
+  
+  --red-boubad: #A3243F;
+  --red-glow: rgba(163, 36, 63, 0.35);
+  
+  --leaf-whisper: #5C8B72;
+  
+  /* Glassmorphism surfaces */
+  --glass-bg: rgba(14, 46, 48, 0.65);
+  --glass-border: rgba(247, 239, 227, 0.12);
+  --glass-border-hover: rgba(232, 163, 61, 0.4);
+  --glass-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.37);
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', serif;
+  --font-sans: 'Poppins', 'Nunito', sans-serif;
+  --font-script: 'Great Vibes', 'Alex Brush', cursive;
+  --font-bangla: 'Hind Siliguri', 'Noto Serif Bengali', serif;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.25s var(--ease-out);
+  --transition-slow: 0.6s var(--ease-out);
+}
+
+/* --------------------------------------------------------------------------
+   2. Global Resets & Base Styles
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-night-deep);
+  color: var(--text-moonlight);
+  font-family: var(--font-sans);
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  background: radial-gradient(circle at 50% 0%, #154548 0%, var(--bg-night-deep) 70%);
+  line-height: 1.6;
+}
+
+/* Background Particle Canvas */
+#fireflies-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Content Container */
+.app-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Typography styles */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.script-names {
+  font-family: var(--font-script);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  color: var(--gold-turmeric);
+  text-shadow: 0 0 25px var(--gold-glow);
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.bangla-text {
+  font-family: var(--font-bangla);
+  font-style: italic;
+  color: var(--gold-turmeric);
+}
+
+/* --------------------------------------------------------------------------
+   3. Hero Section
+   -------------------------------------------------------------------------- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1rem 2rem;
+  position: relative;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  background: rgba(232, 163, 61, 0.12);
+  border: 1px solid rgba(232, 163, 61, 0.3);
+  font-size: 0.9rem;
+  color: var(--gold-turmeric);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--text-muted);
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+}
+
+/* Hero Couple Frame */
+.hero-image-frame {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  border-radius: 24px;
+  padding: 12px;
+  background: rgba(247, 239, 227, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 0 40px var(--gold-glow);
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+  transition: transform var(--transition-slow);
+}
+
+.hero-image-frame:hover {
+  transform: translateY(-5px) scale(1.01);
+  border-color: var(--gold-turmeric);
+}
+
+.hero-image-frame img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+  object-fit: cover;
+}
+
+.hero-scroll-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-moonlight);
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  background: rgba(247, 239, 227, 0.08);
+  border: 1px solid var(--glass-border);
+  transition: all var(--transition-fast);
+}
+
+.hero-scroll-btn:hover {
+  background: var(--gold-turmeric);
+  color: var(--bg-night-deep);
+  box-shadow: 0 0 25px var(--gold-glow);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   4. Section Containers & Headers
+   -------------------------------------------------------------------------- */
+.section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.section-title-wrap {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-title-wrap .sub-label {
+  color: var(--gold-turmeric);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.section-title-wrap h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--text-moonlight);
+}
+
+/* --------------------------------------------------------------------------
+   5. Kabin Completed Checkpoint Section
+   -------------------------------------------------------------------------- */
+.kabin-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--gold-turmeric);
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 5rem;
+  position: relative;
+  box-shadow: 0 0 35px var(--gold-glow);
+}
+
+.kabin-badge {
+  display: inline-block;
+  background: var(--gold-turmeric);
+  color: var(--bg-night-deep);
+  font-weight: 700;
+  padding: 0.35rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.kabin-title {
+  font-size: 2.2rem;
+  color: var(--text-moonlight);
+  margin-bottom: 0.5rem;
+}
+
+.kabin-date {
+  color: var(--gold-turmeric);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. Triple Countdown Section (Holud, Cholon, Boubad)
+   -------------------------------------------------------------------------- */
+.countdowns-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.countdown-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid var(--glass-border);
+  transition: all var(--transition-slow);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.countdown-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+}
+
+.countdown-card.holud::before { background: var(--gold-turmeric); }
+.countdown-card.cholon::before { background: var(--rose-cholon); }
+.countdown-card.boubad::before { background: var(--red-boubad); }
+
+.countdown-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(247, 239, 227, 0.3);
+}
+
+.countdown-header {
+  margin-bottom: 1.5rem;
+}
+
+.countdown-card.holud .event-tag { color: var(--gold-turmeric); }
+.countdown-card.cholon .event-tag { color: var(--rose-cholon); }
+.countdown-card.boubad .event-tag { color: var(--red-boubad); }
+
+.event-tag {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.event-name {
+  font-size: 1.8rem;
+  color: var(--text-moonlight);
+  margin-top: 0.2rem;
+}
+
+.event-date-str {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Timer Display Digits */
+.timer-display {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.time-box {
+  background: rgba(8, 27, 28, 0.6);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 0.75rem 0.25rem;
+}
+
+.time-box .num {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text-moonlight);
+}
+
+.time-box .label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.event-details-box {
+  background: rgba(247, 239, 227, 0.04);
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 0.85rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.detail-item:last-child {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   7. Love Message & Cat Companion
+   -------------------------------------------------------------------------- */
+.love-quote-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.love-quote-card p {
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  color: var(--text-moonlight);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.cat-companion-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cat-icon-svg {
+  width: 48px;
+  height: 48px;
+  fill: var(--leaf-whisper);
+  transition: transform var(--transition-fast);
+}
+
+.cat-companion-bar:hover .cat-icon-svg {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.cat-speech-bubble {
+  background: rgba(92, 139, 114, 0.2);
+  border: 1px solid var(--leaf-whisper);
+  color: var(--text-moonlight);
+  padding: 0.5rem 1rem;
+  border-radius: 16px;
+  font-size: 0.85rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. Why I Love You Interactive Generator & Passphrase Gate
+   -------------------------------------------------------------------------- */
+.interactive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+.interactive-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.reason-box {
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--gold-turmeric);
+  font-weight: 400;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(8, 27, 28, 0.5);
+  border-radius: 14px;
+  border: 1px dashed rgba(232, 163, 61, 0.3);
+}
+
+.btn-primary {
+  background: var(--gold-turmeric);
+  color: var(--bg-night-deep);
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+
+/* Passphrase Gate Form */
+.passphrase-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.passphrase-input {
+  flex: 1;
+  background: rgba(8, 27, 28, 0.7);
+  border: 1px solid var(--glass-border);
+  color: var(--text-moonlight);
+  padding: 0.75rem 1rem;
+  border-radius: 50px;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.passphrase-input:focus {
+  border-color: var(--gold-turmeric);
+}
+
+.locked-letter-content {
+  display: none;
+  background: rgba(8, 27, 28, 0.8);
+  border: 1px solid var(--gold-turmeric);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  text-align: left;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.locked-letter-content.unlocked {
+  display: block;
+  animation: fadeIn 0.8s var(--ease-out);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   9. Footer
+   -------------------------------------------------------------------------- */
+footer {
+  text-align: center;
+  padding: 4rem 1rem 3rem;
+  border-top: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   10. Accessibility / Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
