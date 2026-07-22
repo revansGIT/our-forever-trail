@@ -129,19 +129,27 @@ function populateData(data) {
 
 function renderTimeline(milestones) {
   const container = document.getElementById('timeline-grid');
+  const dotsContainer = document.getElementById('slider-dots');
+  const viewport = document.getElementById('timeline-slider-viewport');
+  const prevBtn = document.getElementById('slider-prev');
+  const nextBtn = document.getElementById('slider-next');
+
   if (!container) return;
 
   container.innerHTML = '';
-  milestones.forEach(m => {
+  if (dotsContainer) dotsContainer.innerHTML = '';
+
+  milestones.forEach((m, idx) => {
     const card = document.createElement('div');
-    card.className = 'timeline-item-card';
+    card.className = `timeline-item-card ${idx === 0 ? 'active-slide' : ''}`;
+    card.dataset.index = idx;
 
     const photoHtml = m.photo
       ? `<div class="timeline-img-wrap"><img src="${m.photo}" alt="${m.title}" loading="lazy"></div>`
       : '';
 
     card.innerHTML = `
-      <span class="timeline-card-badge">${m.badge || 'Memory Unlocked'}</span>
+      <span class="timeline-card-badge memory-unlocked-anim">${m.badge || 'Memory Unlocked'}</span>
       ${photoHtml}
       <div class="timeline-date">${m.displayDate || m.date}</div>
       <h3 class="timeline-title">${m.title}</h3>
@@ -149,7 +157,74 @@ function renderTimeline(milestones) {
     `;
 
     container.appendChild(card);
+
+    if (dotsContainer) {
+      const dot = document.createElement('button');
+      dot.className = `slider-dot ${idx === 0 ? 'active' : ''}`;
+      dot.ariaLabel = `Go to milestone ${idx + 1}`;
+      dot.addEventListener('click', () => scrollToSlide(idx));
+      dotsContainer.appendChild(dot);
+    }
   });
+
+  function scrollToSlide(index) {
+    const cards = container.querySelectorAll('.timeline-item-card');
+    if (!cards[index] || !viewport) return;
+    
+    cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    updateActiveSlide(index);
+  }
+
+  function updateActiveSlide(index) {
+    const cards = container.querySelectorAll('.timeline-item-card');
+    const dots = dotsContainer ? dotsContainer.querySelectorAll('.slider-dot') : [];
+
+    cards.forEach((c, i) => c.classList.toggle('active-slide', i === index));
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+
+    // Cat Companion Reaction
+    const catBubble = document.getElementById('trail-cat-bubble');
+    if (catBubble && milestones[index]) {
+      catBubble.textContent = `✦ Checkpoint: ${milestones[index].title} 🐾`;
+    }
+  }
+
+  if (prevBtn && viewport) {
+    prevBtn.addEventListener('click', () => {
+      viewport.scrollBy({ left: -320, behavior: 'smooth' });
+    });
+  }
+
+  if (nextBtn && viewport) {
+    nextBtn.addEventListener('click', () => {
+      viewport.scrollBy({ left: 320, behavior: 'smooth' });
+    });
+  }
+
+  // Update active slide on scroll
+  if (viewport) {
+    let scrollTimeout;
+    viewport.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const cards = container.querySelectorAll('.timeline-item-card');
+        const viewportCenter = viewport.scrollLeft + viewport.clientWidth / 2;
+        let closestIndex = 0;
+        let minDistance = Infinity;
+
+        cards.forEach((card, i) => {
+          const cardCenter = card.offsetLeft + card.clientWidth / 2;
+          const dist = Math.abs(viewportCenter - cardCenter);
+          if (dist < minDistance) {
+            minDistance = dist;
+            closestIndex = i;
+          }
+        });
+
+        updateActiveSlide(closestIndex);
+      }, 80);
+    }, { passive: true });
+  }
 }
 
 /* --------------------------------------------------------------------------

@@ -4,30 +4,40 @@
 
 ---
 
-## 🎨 1. What You Can Change & How To Edit Anything
+## 📸 1. Complete Image & Asset Replacement Directory
 
-The entire website is designed with a **decoupled data engine (`content.json`)**, meaning **you do NOT need to code** to edit text, dates, photos, or love notes!
+All image files used on the website live inside the **`assets/images/`** folder. You can swap any generated illustration image with your real photos anytime by dropping your new photo into `assets/images/` and giving it the matching filename!
 
-### 📝 Editing Text, Dates & Venue Details
-Open `content.json` in any text editor. You can change:
-- **Names & Tagline**: Edit `him`, `her`, `tagline`.
-- **Event Venues & Dress Codes**: Change `"venue"` and `"dressCode"` for Holud, Cholon, and Boubad.
-- **Love Message & Bengali Quote**: Change `"loveMessage"` and `"bengaliQuote"`.
-- **"Why I Love You" Reasons**: Add, edit, or remove lines inside the `"reasons"` array.
-- **Locked Chamber Letter & Passphrase**:
-  - Update `"passphrase"` (the secret word Oaeshi types to unlock the letter).
-  - Update `"content"` (your private love letter).
+| Image File Location | Purpose / Where it Appears | Recommended Size | How to Replace |
+|---|---|---|---|
+| **`assets/images/hero-couple.png`** | Main Hero Photo Frame at the top of the homepage | 1000 x 1000px (JPG/PNG/WebP) | Save your real couple photo as `hero-couple.png` inside `assets/images/` |
+| **`assets/images/milestone-met.png`** | *First Meeting & Kabin* milestone card | 800 x 600px | Replace file or change `"photo"` path in `content.json` |
+| **`assets/images/milestone-umrah.png`** | *Hajj & Umrah Dream* milestone card | 800 x 600px | Replace file or change `"photo"` path in `content.json` |
+| **`assets/images/milestone-ghuraghuri.png`** | *Traveling & Wandering Adventure* milestone card | 800 x 600px | Replace file or change `"photo"` path in `content.json` |
+| **`assets/images/milestone-cats.png`** | *Cozy Cat Companion Wish* milestone card | 800 x 600px | Replace file or change `"photo"` path in `content.json` |
 
-### 📸 Changing / Swapping Photos
-- **Hero Couple Photo**:
-  - Simply place your real photo inside `assets/images/` and name it `hero-couple.png` (or `.jpg`).
-  - Or edit `index.html` line referencing `assets/images/hero-couple.png`.
-- **Event / Gallery Photos**:
-  - Save your photos from Holud, Cholon, and Boubad in `assets/images/`.
-  - Reference them in `content.json` under `milestones` or `gallery`.
+> **💡 How to Add Brand New Photos to Milestones:**
+> 1. Copy your new photo into `assets/images/my-photo.jpg`.
+> 2. Open `content.json` and update the `"photo"` property of any milestone to `"assets/images/my-photo.jpg"`.
 
-### 🎨 Changing Theme Colors & Fonts
-Open `styles/main.css`. At the top of the file, you will find all design tokens as CSS variables:
+---
+
+## 🎨 2. Text, Event Dates & Passphrase Customization
+
+The entire website is powered by **`content.json`**. You can edit:
+- **Names & Taglines**: Edit `him`, `her`, and `tagline` in `couple`.
+- **Event Dates & Times**: Change start/end ISO dates in `dates` (for Mehedi, Holud, Cholon, Boubad).
+- **Event Venues & Outfits**: Update `"venue"` and `"dressCode"` properties for each event.
+- **Why I Love You Reasons**: Add, edit, or remove lines in the `"reasons"` array.
+- **Secret Chamber Passphrase & Letter**:
+  - Change `"passphrase"` (default: `oaeshi`).
+  - Edit `"content"` to update your private love letter for Oaeshi.
+
+---
+
+## 🎨 3. Theme Colors & Styling Tokens
+
+Open **`styles/main.css`**. At the top of the file, tweak the CSS variables to match your exact outfit shades:
 ```css
 :root {
   --bg-night: #0E2E30;        /* Deep teal-black background */
@@ -35,51 +45,18 @@ Open `styles/main.css`. At the top of the file, you will find all design tokens 
   --gold-turmeric: #E8A33D;    /* Holud accent & glow */
   --rose-cholon: #D8546F;      /* Cholon accent */
   --red-boubad: #A3243F;       /* Boubad accent */
-  --leaf-whisper: #5C8B72;     /* Nature & Cat details */
+  --leaf-whisper: #5C8B72;     /* Mehedi green & Cat details */
 }
 ```
-You can tweak any color code to match your exact wedding outfit shades!
 
 ---
 
-## 🚀 2. How to Deploy Free on GitHub Pages (Step-by-Step)
+## 🚀 4. Free Deployment on GitHub Pages
 
-GitHub Pages gives you **100% free hosting**, automatic HTTPS security, and instant global access.
-
-### Step 1: Push code to your GitHub repository
-Run these commands in your project terminal:
-```bash
-git add .
-git commit -m "Build Phase 0 MVP for Khabbab & Oaeshi"
-git branch -M main
-git push -u origin main
-```
-
-### Step 2: Enable GitHub Pages
-1. Go to your repository page on [GitHub.com](https://github.com).
-2. Click **Settings** (top right tab).
-3. Scroll down the left sidebar to **Pages** (under Code and automation).
-4. Under **Build and deployment**:
-   - **Source**: Select `Deploy from a branch`.
-   - **Branch**: Select `main` branch and `/ (root)` folder.
-5. Click **Save**.
-
-### Step 3: View & Share Your Live Link! 🎉
-- In 1–2 minutes, GitHub will give you a live link like:
-  `https://yourusername.github.io/our-forever-trail/`
-- Open it on your phone to test it, then send the link to Oaeshi over WhatsApp!
-
----
-
-## ⚡ 3. Modern Technology Architecture
-
-This website is built with **cutting-edge modern web standards**:
-- **HTML5 Semantic Canvas**: For floating fireflies and night sky animations.
-- **CSS3 Design System**: CSS Custom Properties, Glassmorphism backdrop filters, Flexbox/Grid responsive layouts, and smooth animations.
-- **Vanilla ES6+ JavaScript**: Modern Fetch API, live dynamic event countdown calculations, interactive milestone unlocks, confetti triggers, and mobile gesture support.
-- **Zero Heavy Build Tooling**: Loads instantly without bundle bloat, perfect for mobile data connections during wedding events.
-
----
-
-## 🔮 4. Future Expansion (Phase 11+)
-Whenever an anniversary, birthday, or spontaneous *ghuraghuri* trip happens in the future, simply add a new object to `"milestones"` inside `content.json`. The trail will automatically extend forward! 💛
+1. Run these commands in your project terminal:
+   ```bash
+   git add .
+   git commit -m "Update website content and photos"
+   git push origin main
+   ```
+2. Your live website at **`https://revansgit.github.io/our-forever-trail/`** will update automatically within 1 minute! 🎉
