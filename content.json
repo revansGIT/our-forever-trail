@@ -124,15 +124,22 @@
       "id": "g5",
       "category": "events",
       "photo": "assets/images/hero-couple.png",
-      "title": "Mehedi Celebration",
-      "caption": "Fragrant henna designs, family smiles, and botanical green attire."
+      "title": "Gaye Holud Preparations 🌼",
+      "caption": "Warm marigolds, turmeric gold, and joyous laughter."
     },
     {
       "id": "g6",
       "category": "events",
       "photo": "assets/images/hero-couple.png",
-      "title": "Gaye Holud Preparations",
-      "caption": "Warm marigolds, turmeric gold, and joyous laughter."
+      "title": "Cholon Ceremony 🌹",
+      "caption": "Stepping forward together surrounded by roses, prayers, and traditional grandeur."
+    },
+    {
+      "id": "g7",
+      "category": "events",
+      "photo": "assets/images/hero-couple.png",
+      "title": "Bou-Bhat Reception ✨",
+      "caption": "Welcoming Oaeshi into our home with open hearts, delicious feast, and royal red elegance."
     }
   ],
   "milestones": [

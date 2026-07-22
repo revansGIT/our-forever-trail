@@ -1,51 +1,65 @@
-# 🌟 IMPORTANT: Customization & Deployment Guide — "Our Forever Trail"
+# 🌟 IMPORTANT: Customization, Asset Map & Post-Wedding Handoff Guide — "Our Forever Trail"
 
-> **Welcome Khabbab!** This document explains everything you can easily change, update, and customize on your website anytime — before tonight's Holud, during the wedding week, or years into the future. It also includes instructions for **100% Free Hosting on GitHub Pages**.
+> **Welcome Khabbab!** This master guide details everything you can easily customize, edit, or switch on your website anytime — before tonight's Holud, during the wedding week, or years into the future as your marriage grows. It also includes step-by-step instructions for **100% Free Hosting on GitHub Pages** and **Post-Wedding Living Scrapbook mode**!
 
 ---
 
 ## 📸 1. Complete Image & Asset Replacement Directory
 
-All image files used on the website live inside the **`assets/images/`** folder. You can swap any generated illustration image with your real photos anytime by dropping your new photo into `assets/images/` and giving it the matching filename!
+All images used across the site live inside the **`assets/images/`** folder. You can swap any illustration image with your real couple photos anytime by dropping your new image into `assets/images/` and using the matching file name or updating the path in `content.json`.
 
-| Image File Location | Purpose / Where it Appears | Recommended Size | How to Replace |
+| Image File Location | Purpose / Where it Appears | Recommended Resolution | How to Replace |
 |---|---|---|---|
-| **`assets/images/hero-couple.png`** | Main Hero Photo Frame at the top of the homepage | 1000 x 1000px (JPG/PNG/WebP) | Save your real couple photo as `hero-couple.png` inside `assets/images/` |
-| **`assets/images/milestone-met.png`** | *First Meeting & Kabin* milestone card | 800 x 600px | Replace file or change `"photo"` path in `content.json` |
-| **`assets/images/milestone-umrah.png`** | *Hajj & Umrah Dream* milestone card | 800 x 600px | Replace file or change `"photo"` path in `content.json` |
-| **`assets/images/milestone-ghuraghuri.png`** | *Traveling & Wandering Adventure* milestone card | 800 x 600px | Replace file or change `"photo"` path in `content.json` |
-| **`assets/images/milestone-cats.png`** | *Cozy Cat Companion Wish* milestone card | 800 x 600px | Replace file or change `"photo"` path in `content.json` |
+| **`assets/images/hero-couple.png`** | Main Hero Photo Frame at the top of the homepage & default gallery cover | 1000 x 1000px (JPG/PNG/WebP) | Drop your real couple photo into `assets/images/` named `hero-couple.png` |
+| **`assets/images/milestone-met.png`** | *First Meeting & Kabin* milestone card | 800 x 600px | Replace file or edit `"photo"` in `content.json` |
+| **`assets/images/milestone-umrah.png`** | *Hajj & Umrah Sacred Dream* milestone card | 800 x 600px | Replace file or edit `"photo"` in `content.json` |
+| **`assets/images/milestone-ghuraghuri.png`** | *Wandering & Traveling Trips* milestone card | 800 x 600px | Replace file or edit `"photo"` in `content.json` |
+| **`assets/images/milestone-cats.png`** | *Adopting A Cat Companion* milestone card | 800 x 600px | Replace file or edit `"photo"` in `content.json` |
 
-> **💡 How to Add Brand New Photos to Milestones:**
-> 1. Copy your new photo into `assets/images/my-photo.jpg`.
-> 2. Open `content.json` and update the `"photo"` property of any milestone to `"assets/images/my-photo.jpg"`.
-
----
-
-## 🎨 2. Text, Event Dates & Passphrase Customization
-
-The entire website is powered by **`content.json`**. You can edit:
-- **Names & Taglines**: Edit `him`, `her`, and `tagline` in `couple`.
-- **Event Dates & Times**: Change start/end ISO dates in `dates` (for Mehedi, Holud, Cholon, Boubad).
-- **Event Venues & Outfits**: Update `"venue"` and `"dressCode"` properties for each event.
-- **Why I Love You Reasons**: Add, edit, or remove lines in the `"reasons"` array.
-- **Secret Chamber Passphrase & Letter**:
-  - Change `"passphrase"` (default: `oaeshi`).
-  - Edit `"content"` to update your private love letter for Oaeshi.
+> **💡 How to Add New Gallery Photos:**
+> 1. Save your photo into `assets/images/holud-photo-1.jpg`.
+> 2. Open `content.json` and add a new item under `"gallery"`:
+> ```json
+> {
+>   "id": "g8",
+>   "category": "events",
+>   "photo": "assets/images/holud-photo-1.jpg",
+>   "title": "Gaye Holud Marigold Memories 🌼",
+>   "caption": "Celebrated on July 23 with family & friends!"
+> }
+> ```
 
 ---
 
-## 🎨 3. Theme Colors & Styling Tokens
+## 🎨 2. Text, Dates, Venues & Passphrase Customization (`content.json`)
 
-Open **`styles/main.css`**. At the top of the file, tweak the CSS variables to match your exact outfit shades:
+Everything on the website is powered by **`content.json`**. Open `content.json` in VS Code or Notepad to update:
+
+1. **Couple Names & Taglines**:
+   - `him`, `himNickname`, `her`, `herNickname`, `tagline` in `"couple"`.
+2. **Event Dates & Times**:
+   - Change start/end ISO timestamps for Mehedi, Holud, Cholon, and Boubad under `"dates"`.
+3. **Event Venues, Maps & Outfits**:
+   - Update venue names, full addresses, dress codes, and timetables under `"eventDetails"`.
+4. **"Why I Love You" Reasons**:
+   - Add or edit any line inside the `"reasons"` array.
+5. **Secret Chamber Passphrase & Love Letter**:
+   - Change `"passphrase"` under `"lockedChamber"` (default: `oaeshi`).
+   - Edit `"content"` to update the private typewriter letter for Oaeshi.
+
+---
+
+## 🎨 3. Theme Colors & Styling (`styles/main.css`)
+
+To adjust theme colors to match outfit shades, open **`styles/main.css`** and tweak CSS variables at the top:
 ```css
 :root {
   --bg-night: #0E2E30;        /* Deep teal-black background */
   --text-moonlight: #F7EFE3;   /* Warm ivory text */
-  --gold-turmeric: #E8A33D;    /* Holud accent & glow */
-  --rose-cholon: #D8546F;      /* Cholon accent */
-  --red-boubad: #A3243F;       /* Boubad accent */
-  --leaf-whisper: #5C8B72;     /* Mehedi green & Cat details */
+  --gold-turmeric: #E8A33D;    /* Holud gold accent */
+  --rose-cholon: #D8546F;      /* Cholon rose accent */
+  --red-boubad: #A3243F;       /* Boubad red accent */
+  --leaf-whisper: #5C8B72;     /* Mehedi botanical green accent */
 }
 ```
 
@@ -53,10 +67,18 @@ Open **`styles/main.css`**. At the top of the file, tweak the CSS variables to m
 
 ## 🚀 4. Free Deployment on GitHub Pages
 
-1. Run these commands in your project terminal:
-   ```bash
-   git add .
-   git commit -m "Update website content and photos"
-   git push origin main
-   ```
-2. Your live website at **`https://revansgit.github.io/our-forever-trail/`** will update automatically within 1 minute! 🎉
+The website is hosted **100% free** on GitHub Pages. Whenever you make edits:
+```bash
+git add .
+git commit -m "Update website content and photos"
+git push origin main
+```
+Your live link **`https://revansgit.github.io/our-forever-trail/`** will update automatically within 60 seconds!
+
+---
+
+## 🗓️ 5. Post-Wedding Living Scrapbook Mode (Future Anniversaries & Travel)
+
+After the wedding celebrations conclude:
+1. Open `content.json` and add new milestone items to `"milestones"` for future anniversaries, Umrah trips, or travel adventures.
+2. The **Smart Dual Countdown Engine** will automatically show `"Completed Checkpoint ✅"` for past wedding dates and showcase your new upcoming journey milestones!
